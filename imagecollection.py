@@ -3,12 +3,14 @@ import os
 import requests
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
+#enter browser name
 browser = webdriver.Firefox(executable_path = "E:/geckodriver")
-browser.get("https://duckduckgo.com/?q=people+standing&t=h_&iar=images&iax=images&ia=images")
+#enter link from page
+browser.get("https://duckduckgo.com")
 soup = bs(browser.page_source,"html.parser")
 element = soup.findAll("span",{"class":"tile--img__media__i"})
 import os
-#os.mkdir("body_images")
+os.mkdir("images")
 count = 1
 for i in range(1,len(element)):
     a = element[i].find("img").attrs["src"].split("//external-content")[1]
